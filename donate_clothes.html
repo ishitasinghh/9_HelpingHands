@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Donate Clothes Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      max-width: 400px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    input[type="text"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+    input[type="submit"] {
+      background-color: #3a9efd;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    width: 500px;
+    height: 300px;
+    box-shadow: 0 25px 50px #3e4491,
+    0 0 0 1000px #3a9efd;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    visibility: hidden;
+    border-radius: 5px;
+}
+
+.popup.active {
+    visibility: visible;
+}
+
+.popup h2 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px;
+    background: #3e4491;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#my-canvas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 100000;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+#my-canvas.active{
+    visibility: visible;
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Donate Clothes</h1>
+    <form action="/submit_donation" method="post">
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email" required>
+
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" name="phone" required>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="clothing_type">Type of Clothing</label>
+      <select id="clothing_type" name="clothing_type" required>
+        <option value="" disabled selected>Select type</option>
+        <option value="men">Men</option>
+        <option value="women">Women</option>
+        <option value="children">Children</option>
+        <option value="unisex">Unisex</option>
+      </select>
+
+      <label for="clothing_condition">Condition of Clothing</label>
+      <select id="clothing_condition" name="clothing_condition" required>
+        <option value="" disabled selected>Select condition</option>
+        <option value="new">New</option>
+        <option value="gently_used">Gently Used</option>
+        <option value="worn">Worn</option>
+      </select>
+
+      <label for="additional_info">Additional Information</label>
+      <textarea id="additional_info" name="additional_info"></textarea>
+
+      <input type="submit" value="Donate" class="donate-btn">
+    </form>
+  </div>
+  <div class="popup">
+    <h2></h2>
+    <b class="close">X</b>
+  </div>
+  <canvas id="my-canvas"></canvas>
+  <script src="confetti.js"></script>
+  <script>
+    const donateBtn = document.querySelector(".donate-btn");
+    const myCanvas = document.getElementById("my-canvas");
+    const popup = document.querySelector(".popup");
+    const popupText = popup.querySelector("h2");
+    const close = popup.querySelector(".close");
+
+    function showPopup() {
+      let first = `Congratulations! You are one step ahead in bringing a change.`;
+      popupText.innerHTML = "<center>" + first + "</center>";
+      popup.classList.add("active");
+      myCanvas.classList.add("active");
+
+      //calling confetti
+      var confettiSettings = { target: "my-canvas" };
+      var confetti = new ConfettiGenerator(confettiSettings);
+      confetti.render();
+    }
+
+    function hidePopup() {
+      popup.classList.remove("active");
+      myCanvas.classList.remove("active");
+    }
+
+    function closeTab() {
+    window.close(); // Close the current tab (browser window)
+  }
+
+    donateBtn.addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent form submission for demonstration purposes
+
+      // Your submit button logic here (e.g., checking if the input is correct, etc.)
+      // Once the submit button is clicked and the input is correct, call the showPopup() function
+      showPopup();
+    });
+
+    close.addEventListener("click", function() {
+    hidePopup();
+    closeTab(); // Call the closeTab() function to close the tab
+  });
+  </script>
+</body>
+</html>

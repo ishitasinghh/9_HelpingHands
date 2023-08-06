@@ -1,0 +1,167 @@
+body{
+
+overflow: hidden;
+}
+.header{
+  display: flex;
+  gap: 150px;
+  justify-content: center;
+  align-items: center;
+}
+
+.home{
+  color: black;
+  font-size: 20px;
+}
+.about{
+  color: black;
+  font-size: 20px;
+}
+.projects{
+  color: black;
+  font-size: 20px;
+}
+
+.make-a-donation{
+  color: black;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 900px) {
+  .navbar{
+    flex-direction: column;
+    gap:0px;
+  }
+}
+
+.landing-page{
+  display: flex;
+  height: 600px;
+  gap: 10px;
+  justify-content: center;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.intro{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.intro > p{
+  font-size: 30px;
+}
+.image{
+  height: 50px;
+  width: 50px;
+}
+.imaage{
+  height: 550px;
+  width: 1390px;
+}
+.col-md-7{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.l1 {
+  position: relative;
+  height: 800px;
+}
+@media screen and (max-width: 768px) {
+  .l3,
+  .l1 {
+    height: 700px;
+  }
+}
+.l3,.l1 {
+  height: 600px;
+}
+.l3 .l2,
+.l1 .l2 {
+  position: absolute !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.l2 {
+  position: absolute !important;
+  width: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(66, 64, 64, 0.9);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.l3 {
+  background-size: cover;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .l3 {
+    heifght: inherit;
+    padding: 3em 0;
+  }
+}
+.l3 .btn {
+  padding: 1em 2em;
+  opacity: .9;
+}
+.l3 {
+  height: 600px;
+
+}
+@media screen and (max-width: 768px) {
+  .l3 {
+    heifght: inherit;
+    padding: 3em 0;
+  }
+}
+.l3  {
+  top: 50%;
+  position: absolute;
+  width: 100%;
+  margin-top: -80px;
+  z-index: 2;
+  color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .l3  {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+.l3 h2 {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 60px;
+  margin-bottom: 10px;
+  font-weight: 300 !important;
+}
+.l3 h2 strong {
+  font-weight: 700;
+}
+@media screen and (max-width: 768px) {
+  .l3 h2 {
+    font-size: 40px;
+  }
+}
+.l3{
+  display: block;
+  margin-bottom: 30px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
